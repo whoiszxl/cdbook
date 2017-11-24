@@ -12,7 +12,7 @@
 */
 use App\Http\Controllers;
 
-/*文章路由 */
+/********************文章路由 **********************/
 //文章列表页
 Route::get('/article', 'ArticleController@index');
 
@@ -32,3 +32,25 @@ Route::get('/article/delete/{article}', 'ArticleController@delete');
 
 //图片上传
 Route::post('/article/image/upload', 'ArticleController@imageUpload');
+
+
+
+/*******************用户模块 **********************/
+//用户注册页面
+Route::get('/register', 'RegisterController@index');
+//用户注册逻辑
+Route::post('/register', 'RegisterController@register');
+
+//用户登录页面
+Route::get('/login', 'LoginController@index');
+//用户登录逻辑
+Route::post('/login', 'LoginController@login');
+//用户登出逻辑
+Route::get('/logout', 'LoginController@logout');
+
+//个人设置页面
+Route::get('/user/me/setting', 'UserController@setting');
+//个人设置逻辑
+Route::post('/user/me/setting', 'UserController@settingStore');
+
+
