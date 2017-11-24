@@ -42,7 +42,7 @@
 				<a href="/article/{{$art->id}}">{{$art->title}}</a>
 			</h2>
 			<p class="blog-post-meta">{{$art->created_at->toFormattedDateString()}}
-				<a href="/user/5">Kassandra Ankunding2</a>
+				<a href="/user/5">{{ $art->user->name }}</a>
 			</p>
 
 			{!! str_limit($art->content, 200, '.....') !!}

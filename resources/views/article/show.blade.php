@@ -12,7 +12,7 @@
 		</div>
 
 		<p class="blog-post-meta">{{$article->created_at->toFormattedDateString()}}
-			<a href="#">Kassandra Ankunding2</a>
+			<a href="#">{{ $article->user->name }}</a>
 		</p>
 
 		<p>

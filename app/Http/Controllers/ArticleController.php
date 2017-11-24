@@ -43,7 +43,9 @@ class ArticleController extends Controller
         ]);
 
         //添加逻辑
-        $result = Article::create(request(['title', 'content']));
+        $user_id = \Auth::id();
+        $params = array_merge(request(['title','content']), compact('user_id'));
+        $result = Article::create($params);
         
         //视图渲染
         return redirect('/article');
