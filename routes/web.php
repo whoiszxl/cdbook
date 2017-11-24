@@ -33,6 +33,9 @@ Route::get('/article/delete/{article}', 'ArticleController@delete');
 //图片上传
 Route::post('/article/image/upload', 'ArticleController@imageUpload');
 
+//提交评论
+Route::post('/article/comment/{article}', 'ArticleController@comment');
+
 
 
 /*******************用户模块 **********************/

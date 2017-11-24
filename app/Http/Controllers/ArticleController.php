@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Article;
+use \App\Comment;
 
 class ArticleController extends Controller
 {
@@ -12,14 +13,14 @@ class ArticleController extends Controller
     public function index(){
         \Log::info("my_index", ['data'=>'xixi']);
 
-        $article = Article::orderBy('created_at', 'desc')->paginate(10);
+        $article = Article::orderBy('created_at', 'desc')->withCount("comments")->paginate(10);
 
         return view("article/index", compact('article'));
     }
 
     //详情页面
     public function show(Article $article){
-        
+        $article->load('comments');
         return view("article/show", compact('article'));
     }
 
@@ -85,5 +86,18 @@ class ArticleController extends Controller
     public function imageUpload(Request $request){
         $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
         return asset('storage/'.$path);
+    }
+
+    //提交评论
+    public function comment(Article $article){
+        $this->validate(request(), [
+            'content' => 'required|min:5',
+        ]);
+
+        $comment = new Comment();
+        $comment->user_id = \Auth::id();
+        $comment->content = request('content');
+        $article->comments()->save($comment);
+        return back();
     }
 }
