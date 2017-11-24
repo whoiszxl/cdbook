@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="col-sm-8 blog-main">
-        <form action="/posts" method="POST">
+        <form action="/article" method="POST">
             <input type="hidden" name="_token" value="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy">
             <div class="form-group">
                 <label>标题</label>

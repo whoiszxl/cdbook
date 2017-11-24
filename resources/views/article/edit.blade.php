@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="col-sm-8 blog-main">
-        <form action="/posts/62" method="POST">
+        <form action="/article/62" method="POST">
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" value="MESUY3topeHgvFqsy9EcM916UWQq6khiGHM91wHy">
             <div class="form-group">
