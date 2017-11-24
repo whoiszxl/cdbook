@@ -36,6 +36,12 @@ Route::post('/article/image/upload', 'ArticleController@imageUpload');
 //提交评论
 Route::post('/article/comment/{article}', 'ArticleController@comment');
 
+//点赞
+Route::get('/article/zan/{article}', 'ArticleController@zan');
+
+//取消赞
+Route::get('/article/unzan/{article}', 'ArticleController@unzan');
+
 
 
 /*******************用户模块 **********************/

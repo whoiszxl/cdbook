@@ -3,14 +3,12 @@
 	<div class="blog-post">
 		<div style="display:inline-flex">
 			<h2 class="blog-post-title">{{$article->title}}</h2>
-			
+
 			@can('update', $article)
 			<a style="margin: auto" href="/article/edit/{{$article->id}}">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			</a>
-			@endcan
-
-			@can('delete', $article)
+			@endcan @can('delete', $article)
 			<a style="margin: auto" href="/article/delete/{{$article->id}}">
 				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</a>
@@ -28,8 +26,11 @@
 			</p>
 		</p>
 		<div>
+			@if($article->zan(\Auth::id())->exists())
+			<a href="/article/unzan/{{$article->id}}" type="button" class="btn btn-default btn-lg">取消赞</a>
+			@else
 			<a href="/article/zan/{{$article->id}}" type="button" class="btn btn-primary btn-lg">赞</a>
-
+			@endif
 		</div>
 	</div>
 

@@ -17,4 +17,15 @@ class Article extends Model
         
         return $this->hasMany('\App\Comment', 'article_id', 'id')->orderBy('created_at', 'desc');
     }
+
+    //關聯讚
+    public function zan($user_id){
+        
+        return $this->hasOne(\App\Zan::class)->where('user_id', $user_id);
+    }
+
+    //文章的所有讚
+    public function zans(){
+        return $this->hasMany(\App\Zan::class);
+    }
 }

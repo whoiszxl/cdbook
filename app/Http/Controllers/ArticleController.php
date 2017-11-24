@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use \App\Article;
 use \App\Comment;
+use \App\Zan;
 
 class ArticleController extends Controller
 {
@@ -13,7 +14,7 @@ class ArticleController extends Controller
     public function index(){
         \Log::info("my_index", ['data'=>'xixi']);
 
-        $article = Article::orderBy('created_at', 'desc')->withCount("comments")->paginate(10);
+        $article = Article::orderBy('created_at', 'desc')->withCount(['comments','zans'])->paginate(10);
 
         return view("article/index", compact('article'));
     }
@@ -98,6 +99,23 @@ class ArticleController extends Controller
         $comment->user_id = \Auth::id();
         $comment->content = request('content');
         $article->comments()->save($comment);
+        return back();
+    }
+
+    //點讚
+    public function zan(Article $article){
+        $param = [
+            'user_id' => \Auth::id(),
+            'article_id' => $article->id,
+        ];
+        //數據庫存在便查找，不存在則創建
+        Zan::firstOrCreate($param);
+        return back();
+    }
+
+    //取消讚
+    public function unzan(Article $article){
+        $article->zan(\Auth::id())->delete();
         return back();
     }
 }
