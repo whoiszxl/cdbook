@@ -64,6 +64,8 @@ class ArticleController extends Controller
             'title' => 'required|string|max:100|min:5',
             'content' => 'required|string|min:10',
         ]);
+        //权限验证
+        $this->authorize('update', $article);
         //逻辑
         $article->title = request('title');
         $article->content = request('content');
@@ -74,7 +76,7 @@ class ArticleController extends Controller
 
     //删除逻辑
     public function delete(Article $article){
-        //TODO : 用户权限验证
+        $this->authorize('delete', $article);
         $article->delete();
         return redirect("/article");
     }

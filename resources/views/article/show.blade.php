@@ -3,12 +3,18 @@
 	<div class="blog-post">
 		<div style="display:inline-flex">
 			<h2 class="blog-post-title">{{$article->title}}</h2>
+			
+			@can('update', $article)
 			<a style="margin: auto" href="/article/edit/{{$article->id}}">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			</a>
+			@endcan
+
+			@can('delete', $article)
 			<a style="margin: auto" href="/article/delete/{{$article->id}}">
 				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</a>
+			@endcan
 		</div>
 
 		<p class="blog-post-meta">{{$article->created_at->toFormattedDateString()}}
