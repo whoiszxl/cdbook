@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth:web'], function(){
 
     //个人中心
     Route::get('/user/{user}', 'UserController@show');
+    Route::post('/user/fan/{user}', 'UserController@fan');
+    Route::post('/user/unfan/{user}', 'UserController@unfan');
 
     //个人设置页面
     Route::get('/user/setting/{user}', 'UserController@setting');
