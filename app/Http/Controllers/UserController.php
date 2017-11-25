@@ -31,6 +31,7 @@ class UserController extends Controller
         }
         if ($request->file('avatar')) {
             $path = $request->file('avatar')->storePublicly(md5(\Auth::id() . time()));
+            \Log::info('上傳圖片成功:'.$path);
             $user->avatar = "/storage/". $path;
         }
 
@@ -60,13 +61,25 @@ class UserController extends Controller
     }
 
     //关注用户
-    public function fan(){
+    public function fan(User $user){
+        $current_user = \Auth::user();
+        $current_user->doFan($user->id);
 
+        return [
+            'error' => 0,
+            'msg' => ''
+        ];
     }
 
     //取消用户
-    public function unfan(){
-        
+    public function unfan(User $user){
+        $current_user = \Auth::user();
+        $current_user->doUnFan($user->id);
+
+        return [
+            'error' => 0,
+            'msg' => ''
+        ];
     }
 
 }
