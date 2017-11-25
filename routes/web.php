@@ -12,35 +12,53 @@
 */
 use App\Http\Controllers;
 
-/********************文章路由 **********************/
-//文章列表页
-Route::get('/article', 'ArticleController@index');
+Route::get('/', "LoginController@index");
 
-//创建文章
-Route::get('/article/create', 'ArticleController@create');
-Route::post('/article', 'ArticleController@store');
+Route::group(['middleware' => 'auth:web'], function(){
 
-//文章详情页
-Route::get('/article/{article}', 'ArticleController@show');
+    /********************文章路由 **********************/
+    //文章列表页
+    Route::get('/article', 'ArticleController@index');
 
-//编辑文章
-Route::get('/article/edit/{article}', 'ArticleController@edit');
-Route::put('/article/{article}', 'ArticleController@update');
+    //创建文章
+    Route::get('/article/create', 'ArticleController@create');
+    Route::post('/article', 'ArticleController@store');
 
-//删除文章
-Route::get('/article/delete/{article}', 'ArticleController@delete');
+    //搜索
+    Route::get('/article/search', 'ArticleController@search');
 
-//图片上传
-Route::post('/article/image/upload', 'ArticleController@imageUpload');
+    //文章详情页
+    Route::get('/article/{article}', 'ArticleController@show');
 
-//提交评论
-Route::post('/article/comment/{article}', 'ArticleController@comment');
+    //编辑文章
+    Route::get('/article/edit/{article}', 'ArticleController@edit');
+    Route::put('/article/{article}', 'ArticleController@update');
 
-//点赞
-Route::get('/article/zan/{article}', 'ArticleController@zan');
+    //删除文章
+    Route::get('/article/delete/{article}', 'ArticleController@delete');
+    
+    //图片上传
+    Route::post('/article/image/upload', 'ArticleController@imageUpload');
 
-//取消赞
-Route::get('/article/unzan/{article}', 'ArticleController@unzan');
+    //提交评论
+    Route::post('/article/comment/{article}', 'ArticleController@comment');
+
+    //点赞
+    Route::get('/article/zan/{article}', 'ArticleController@zan');
+
+    //取消赞
+    Route::get('/article/unzan/{article}', 'ArticleController@unzan');
+
+    //个人设置页面
+    Route::get('/user/me/setting', 'UserController@setting');
+    //个人设置逻辑
+    Route::post('/user/me/setting', 'UserController@settingStore');
+
+});
+
+
+
+
 
 
 
@@ -51,15 +69,12 @@ Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@register');
 
 //用户登录页面
-Route::get('/login', 'LoginController@index');
+Route::get('/login', 'LoginController@index')->name('login');
 //用户登录逻辑
 Route::post('/login', 'LoginController@login');
 //用户登出逻辑
 Route::get('/logout', 'LoginController@logout');
 
-//个人设置页面
-Route::get('/user/me/setting', 'UserController@setting');
-//个人设置逻辑
-Route::post('/user/me/setting', 'UserController@settingStore');
+
 
 
