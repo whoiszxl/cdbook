@@ -49,10 +49,13 @@ Route::group(['middleware' => 'auth:web'], function(){
     //取消赞
     Route::get('/article/unzan/{article}', 'ArticleController@unzan');
 
+    //个人中心
+    Route::get('/user/{user}', 'UserController@show');
+
     //个人设置页面
-    Route::get('/user/me/setting', 'UserController@setting');
+    Route::get('/user/setting/{user}', 'UserController@setting');
     //个人设置逻辑
-    Route::post('/user/me/setting', 'UserController@settingStore');
+    Route::post('/user/setting/{user}', 'UserController@settingStore');
 
 });
 

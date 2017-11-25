@@ -31,10 +31,10 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="/user/5">我的主页</a>
+							<a href="/user/{{\Auth::id()}}">我的主页</a>
 						</li>
 						<li>
-							<a href="/user/5/setting">个人设置</a>
+							<a href="/user/setting/{{\Auth::id()}}">个人设置</a>
 						</li>
 						<li>
 							<a href="/logout">登出</a>
