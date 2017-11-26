@@ -87,5 +87,5 @@ Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 
 
-
+include_once('admin.php');
 
