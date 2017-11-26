@@ -14,7 +14,7 @@ class ArticleController extends Controller
     public function index(){
         \Log::info("my_index", ['data'=>'xixi']);
 
-        $article = Article::orderBy('created_at', 'desc')->withCount(['comments','zans'])->paginate(10);
+        $article = Article::where('status','1')->orderBy('created_at', 'desc')->withCount(['comments','zans'])->paginate(10);
 
         return view("article/index", compact('article'));
     }
