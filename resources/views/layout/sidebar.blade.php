@@ -26,34 +26,34 @@
 			</div>
 			<script>
 				window._bd_share_config = {
-                                "common": {
-                                    "bdSnsKey": {
-                                        "tsina": "120473611"
-                                    },
-                                    "bdText": "",
-                                    "bdMini": "2",
-                                    "bdMiniList": false,
-                                    "bdPic": "",
-                                    "bdStyle": "0",
-                                    "bdSize": "24"
-                                },
-                                "share": {},
-                                "image": {
-                                    "viewList": ["tsina", "renren", "douban", "weixin", "qzone", "tqq", "bdhome"],
-                                    "viewText": "分享到：",
-                                    "viewSize": "16"
-                                },
-                                "selectShare": {
-                                    "bdContainerClass": null,
-                                    "bdSelectMiniList": ["tsina", "renren", "douban", "weixin", "qzone", "tqq",
-                                        "bdhome"
-                                    ]
-                                }
-                            };
-                            with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement(
-                                    'script')).src =
-                                'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~
-                                (-new Date() / 36e5)];
+					"common": {
+						"bdSnsKey": {
+							"tsina": "120473611"
+						},
+						"bdText": "",
+						"bdMini": "2",
+						"bdMiniList": false,
+						"bdPic": "",
+						"bdStyle": "0",
+						"bdSize": "24"
+					},
+					"share": {},
+					"image": {
+						"viewList": ["tsina", "renren", "douban", "weixin", "qzone", "tqq", "bdhome"],
+						"viewText": "分享到：",
+						"viewSize": "16"
+					},
+					"selectShare": {
+						"bdContainerClass": null,
+						"bdSelectMiniList": ["tsina", "renren", "douban", "weixin", "qzone", "tqq",
+							"bdhome"
+						]
+					}
+				};
+				with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement(
+						'script')).src =
+					'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~
+					(-new Date() / 36e5)];
 			</script>
 		</div>
 	</aside>
@@ -63,18 +63,13 @@
 		</div>
 
 		<ul class="category-root list-group">
+			@foreach($topics as $topic)
 			<li class="list-group-item">
-				<a href="/topic/1">旅游
+				<a href="/topic/{{$topic->id}}">{{$topic->name}}
 				</a>
 			</li>
-			<li class="list-group-item">
-				<a href="/topic/2">轻松
-				</a>
-			</li>
-			<li class="list-group-item">
-				<a href="/topic/5">测试专题
-				</a>
-			</li>
+			@endforeach
+
 		</ul>
 
 	</aside>

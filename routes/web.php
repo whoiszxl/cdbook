@@ -54,6 +54,12 @@ Route::group(['middleware' => 'auth:web'], function(){
     Route::post('/user/fan/{user}', 'UserController@fan');
     Route::post('/user/unfan/{user}', 'UserController@unfan');
 
+    //专题详情页面
+    Route::get('/topic/{topic}', 'TopicController@show');
+    //投稿
+    Route::get('/topic/submit/{topic}', 'TopicController@submit');
+
+
     //个人设置页面
     Route::get('/user/setting/{user}', 'UserController@setting');
     //个人设置逻辑
