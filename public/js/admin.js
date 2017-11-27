@@ -24,3 +24,30 @@ $(".article-audit").click(function(event){
 		}
 	});
 });
+
+
+$(".resource-delete").click(function(event){
+
+	if(confirm("确认删除？") == false){
+		return;
+	}
+
+	target = $(event.target);
+	event.parentDefault();
+	var url = $(target).attr("delete-url");
+
+	$.ajax({
+
+		url		: url,
+		method	: "POST",
+		data 	: {"_method": 'DELETE'},
+		dataType: "json",
+		success : function(data){
+			if(data.error != 0){
+				alert(data.msg);
+				return;
+			}
+			window.location.reload();
+		}
+	});
+});
