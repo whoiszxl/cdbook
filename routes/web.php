@@ -59,6 +59,9 @@ Route::group(['middleware' => 'auth:web'], function(){
     //投稿
     Route::get('/topic/submit/{topic}', 'TopicController@submit');
 
+    //通知
+    Route::get('/notices', 'NoticeController@index');
+
 
     //个人设置页面
     Route::get('/user/setting/{user}', 'UserController@setting');
