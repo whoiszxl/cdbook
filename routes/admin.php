@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin'], function(){
         // 角色管理
         Route::get('/roles', '\App\Admin\Controllers\RoleController@index');
         Route::get('/roles/create', '\App\Admin\Controllers\RoleController@create');
-        Route::post('/roles/store', '\App\Admin\Controllers\RoleController@store');
+        Route::post('/roles/store', '\App\Admin\Controllers\RoleController@storeRole');
         Route::get('/roles/permission/{role}', '\App\Admin\Controllers\RoleController@permission');
         Route::post('/roles/permission/{role}', '\App\Admin\Controllers\RoleController@storePermission');
 
