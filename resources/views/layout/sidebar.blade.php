@@ -7,11 +7,11 @@
 		</div>
 		<div class="panel-body">
 			<p>
-				欢迎来到简书网站
+				欢迎来到cdbook
 			</p>
 			<p>
 				<strong>
-					<a href="/">简书网站</a>
+					<a href="/">cdbook</a>
 				</strong> 基于 Laravel5.4 构建
 			</p>
 			<div class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1494580268777">
