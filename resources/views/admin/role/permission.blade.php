@@ -17,7 +17,13 @@
                             @foreach($permissions as $permission)
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="permissions[]" @if ($myPermissions->contains($permission)) checked @endif value="{{$permission->id}}"> {{$permission->name}}
+                                    <input type="checkbox" name="permissions[]" 
+                                    
+                                    @if ($myPermissions->contains($permission)) 
+                                    checked 
+                                    @endif 
+                                    
+                                    value="{{$permission->id}}"> {{$permission->name}}
                                 </label>
                             </div>
                             @endforeach

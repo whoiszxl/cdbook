@@ -27,7 +27,7 @@
                                     <td>{{$role->name}}</td>
                                     <td>{{$role->description}}</td>
                                     <td>
-                                        <a type="button" class="btn" href="/admin/roles/{{$role->id}}/permission" >权限管理</a>
+                                        <a type="button" class="btn" href="/admin/roles/permission/{{$role->id}}" >权限管理</a>
                                     </td>
                                 </tr>
                             @endforeach
